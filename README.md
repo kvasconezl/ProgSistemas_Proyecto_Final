@@ -25,9 +25,9 @@ sudo apt install libmicrohttpd*
 3 - Uso general
 ----------------
 ```
-make
-./bin/exec
-$python3 ./cliente.py
+$ make
+$ ./bin/exec
+$ python3 ./cliente.py
 ```
 
 4 - Autores
