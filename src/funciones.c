@@ -40,7 +40,7 @@ struct udev_device *obtener_hijo(struct udev *udev, struct udev_device *padre, c
 }
 
 /* esta funcion retorna la direccion logica del dispositivos que se encuentre conectado a la pc y cuyo
-	nodo sea igual a direccion_fisica (argumento)*/
+    nodo sea igual a direccion_fisica (argumento)*/
 const char *direccionDispositivo(const char *direccion_fisica) {
     FILE *fp;
     struct mntent *fs;
@@ -52,7 +52,7 @@ const char *direccionDispositivo(const char *direccion_fisica) {
     /* que leerá UNA linea del mtab, y les devolverá una estructura:*/
     while ((fs = getmntent(fp)) != NULL) {
         /* resulta que direccion_fisica no contiene un numero al final que indica la particion correspondiente
-		en caso de solo poseer una sola particion posee el numero 1 (esto es lo mas comun para un dispositivo usb)*/
+        en caso de solo poseer una sola particion posee el numero 1 (esto es lo mas comun para un dispositivo usb)*/
         if (strstr(fs->mnt_fsname, direccion_fisica) > 0) {
             endmntent(fp);
             return fs->mnt_dir;
@@ -89,10 +89,9 @@ void enumerar_disp_alm_masivo(struct udev *udev, int logsdaemon) {
 
         if (block && scsi_disk && usb) {
             const char *nodo = udev_device_get_devnode(block);
-            linea = sprintf(concat_str, "-----------\nNode = %s\nNode1 = %s\nDireccion de montaje = %s\nid(idVendor:idProduct)= %s:%s\nscsi = %s\n-----------\n",
+            linea = sprintf(concat_str, "-----------\nNode = %s\nMount = %s\nid(idVendor:idProduct)= %s:%s\nscsi = %s\n-----------\n",
                             nodo,
                             direccionDispositivo(nodo),
-                            udev_device_get_devnode(block),
                             udev_device_get_sysattr_value(usb, "idVendor"),
                             udev_device_get_sysattr_value(usb, "idProduct"),
                             udev_device_get_sysattr_value(scsi, "vendor"));
