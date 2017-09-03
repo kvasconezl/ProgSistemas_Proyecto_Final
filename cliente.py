@@ -1,10 +1,8 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import json
 import requests
+import subprocess
 
-
+proc1 = subprocess.Popen(["./bin/server"])
 
 def pedirNumeroEntero():
     correcto = False
@@ -47,7 +45,7 @@ while not salir:
                                  'nuevo_nombre': nuevo_nombre}
                                  """
         s_nombrar_dispositivos = {'solicitud': 'nombrar_dispositivo', 'nodo': '/dev/user',
-                                  'nuevo_nombre': 'Roberth_pen'}
+                                  'nuevo_nombre': 'Roberth_pen'} #cambiar /dev/user
         n_d = requests.post("http://127.0.0.1:8888/nombrar_dispositivo", json=json.dumps(s_nombrar_dispositivos))
         if n_d.status_code == 200:
             print('Conexion Satifactoria')
@@ -74,9 +72,9 @@ while not salir:
             print ("Aqui va todo, luego ire actualizando")
 
     elif opcion == 5:
+        proc1.kill()
         salir = True
     else:
         print ("****Introduce un numero entre 1 y 4******")
 
 print ("Fin")
-
