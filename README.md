@@ -18,8 +18,8 @@ Para en funcionamiento de este programa es necesario contar con las siguientes l
 * Libreria jsmn
 
 ```
-sudo apt install libudev-dev
-sudo apt install libmicrohttpd*
+$ sudo apt install libudev-dev
+$ sudo apt install libmicrohttpd*
 ```
 
 3 - Uso general
