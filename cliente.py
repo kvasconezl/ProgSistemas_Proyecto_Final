@@ -2,7 +2,9 @@ import json
 import requests
 import subprocess
 
-proc1 = subprocess.Popen(["./bin/server"])
+proc1 = subprocess.Popen(["./bin/exec"])
+proc2 = subprocess.Popen(["./bin/server"])
+
 
 def pedirNumeroEntero():
     correcto = False
@@ -72,6 +74,7 @@ while not salir:
             print ("Aqui va todo, luego ire actualizando")
 
     elif opcion == 5:
+        proc2.kill()
         proc1.kill()
         salir = True
     else:

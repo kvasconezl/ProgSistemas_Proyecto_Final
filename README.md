@@ -26,7 +26,6 @@ $ sudo apt install libmicrohttpd*
 ----------------
 ```
 $ make
-$ ./bin/exec
 $ python3 ./cliente.py
 ```
 
